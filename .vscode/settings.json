@@ -1,0 +1,15 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true
+  },
+  "prettier.configPath": ".prettierrc.json",
+  "prettier.enable": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/*.code-search": true
+  }
+}

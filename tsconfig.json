@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2016",
+    /* Modules */
+    "module": "Node16",
+    "rootDir": "src",
+    "moduleResolution": "Node16",
+    "baseUrl": "./",
+    /* Emit */
+    "declaration": true,
+    "removeComments": true,
+    "outDir": "lib",
+    /* Interop Constraints */
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    /* Type Checking */
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}
