@@ -22,12 +22,11 @@
   ],
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
   "dependencies": {
-    "debug": "^4.3.4",
-    "mongodb-memory-server": "^9.1.1"
+    "debug": "^4.3.0",
+    "mongodb-memory-server": "^9.1.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
@@ -38,7 +37,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.0"
   },
   "peerDependencies": {
     "jest-environment-node": "^27 || ^28 || ^29"
