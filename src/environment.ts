@@ -1,8 +1,11 @@
 import { EnvironmentContext, JestEnvironmentConfig } from "@jest/environment"
+import { debug } from "debug"
 import { TestEnvironment as NodeEnvironment } from "jest-environment-node"
 import { readFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
+
+const log = debug("jest-mongodb:environment")
 
 export default class MongoEnvironment extends NodeEnvironment {
   constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
@@ -13,10 +16,12 @@ export default class MongoEnvironment extends NodeEnvironment {
     await super.setup()
     const workerId = this._getCurrentWorkerId()
     this.global.__MONGO_URI__ = await this._getDatabaseUri(workerId)
+    log("Setup worker %s with URI %s", workerId, this.global.__JEST_MONGO_URI__)
   }
 
   override async teardown(): Promise<void> {
     this.global.__MONGO_URI__ = undefined
+    log("Teardown worker %s", this._getCurrentWorkerId())
     await super.teardown()
   }
 
