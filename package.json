@@ -18,11 +18,13 @@
     "url": "https://github.com/thibseisel"
   },
   "files": [
+    "jest-preset.js",
     "lib/"
   ],
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublishOnly": "tsc"
   },
   "dependencies": {
     "debug": "^4.3.0",
@@ -44,5 +46,8 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
