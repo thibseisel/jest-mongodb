@@ -16,11 +16,10 @@ export default class MongoEnvironment extends NodeEnvironment {
     await super.setup()
     const workerId = this._getCurrentWorkerId()
     this.global.__MONGO_URI__ = await this._getDatabaseUri(workerId)
-    log("Setup worker %s with URI %s", workerId, this.global.__JEST_MONGO_URI__)
+    log("Setup worker %s with URI %s", workerId, this.global.__MONGO_URI__)
   }
 
   override async teardown(): Promise<void> {
-    this.global.__MONGO_URI__ = undefined
     log("Teardown worker %s", this._getCurrentWorkerId())
     await super.teardown()
   }
