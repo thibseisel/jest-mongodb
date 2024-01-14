@@ -8,6 +8,17 @@ import { resolve } from "node:path"
 
 const log = debug("jest-mongodb:global")
 
+interface SetupOptions {
+  /**
+   * Maximum number of specs that may run in parallel.
+   */
+  parallelCount: number
+  /**
+   * Version of the MongoDB binary to use.
+   */
+  version?: string
+}
+
 /**
  * Manages a single MongoDB server shared between all test specs.
  * This can safely be used when running multiple test specs in parallel, as
@@ -21,9 +32,9 @@ class SingleInstanceRunner {
    * Starts the MongoDB server.
    * @param parallelCount Maximum number of specs that may run in parallel.
    */
-  async setup(parallelCount: number): Promise<void> {
-    await this.startMongoServer()
-    await this.writeConfigurationFile(parallelCount)
+  async setup(options: SetupOptions): Promise<void> {
+    await this.startMongoServer(options.version)
+    await this.writeConfigurationFile(options.parallelCount)
   }
 
   private async writeConfigurationFile(parallelCount: number) {
@@ -45,11 +56,11 @@ class SingleInstanceRunner {
     )
   }
 
-  private async startMongoServer() {
+  private async startMongoServer(version?: string) {
     if (!this.server) {
       this.server = new MongoMemoryServer({
         binary: {
-          version: "4.4.1",
+          version,
           checkMD5: false,
         },
       })

@@ -1,4 +1,5 @@
 import type { Config } from "@jest/types"
+import { getConfig } from "./configuration"
 import runner from "./single-instance-runner"
 
 /**
@@ -7,5 +8,9 @@ import runner from "./single-instance-runner"
 export default async function globalSetup(
   globalConfig: Config.GlobalConfig,
 ): Promise<void> {
-  await runner.setup(globalConfig.maxWorkers)
+  const config = await getConfig(globalConfig.rootDir)
+  await runner.setup({
+    parallelCount: globalConfig.maxWorkers,
+    version: config?.version,
+  })
 }
