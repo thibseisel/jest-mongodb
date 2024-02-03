@@ -1,5 +1,5 @@
 import { EnvironmentContext, JestEnvironmentConfig } from "@jest/environment"
-import { debug } from "debug"
+import debug from "debug"
 import { TestEnvironment as NodeEnvironment } from "jest-environment-node"
 import { readFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
